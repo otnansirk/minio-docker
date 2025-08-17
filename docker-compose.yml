@@ -27,3 +27,8 @@ services:
       echo '✅ Bucket public sudah readonly (GET only)' &&
       exit 0
       "
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TOKEN}
+    restart: always
